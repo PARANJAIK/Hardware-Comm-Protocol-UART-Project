@@ -96,7 +96,6 @@ if(clear_bitcounter) bit_counter <= 0;
 else if(inc_bitcounter) 
 begin
 bit_counter = bit_counter + 1;
-//if(bit_counter == 4'd9) next_state <= idle_state;
 end
 if(load) data_packet = {1'b1,data,1'b0};
 else if(shift) data_packet <= data_packet >> 1;
@@ -201,7 +200,6 @@ end
 
 always@(posedge clk)
 begin
-//if(shift) begin data_packet[8:0] <= data_packet[9:1]; data_packet[9] <= register_input; end
 if(shift) begin data_packet = data_packet >> 1; data_packet[9] = register_input; end
 if(clear_samplescounter) samples_counter <= 0;
 else if(inc_samplescounter) samples_counter <= samples_counter + 1;
